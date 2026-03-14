@@ -42,10 +42,13 @@ export const InventoryProvider = ({ children }) => {
   useEffect(() => { localStorage.setItem('inv_notifs', JSON.stringify(notifications)); }, [notifications]);
 
   const setInventory = (updater) => {
-    setAllInventories(prev => ({
-      ...prev,
-      [activeUserId]: typeof updater === 'function' ? updater(prev[activeUserId] || defaultInventory) : updater
-    }));
+    setAllInventories(prev => {
+      const uid = activeUserId;
+      return {
+        ...prev,
+        [uid]: typeof updater === 'function' ? updater(prev[uid] || defaultInventory) : updater
+      };
+    });
   };
 
   // ── Inventory CRUD ──

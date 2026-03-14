@@ -156,7 +156,7 @@ const ShoppingList = () => {
                           <Chip label={item.category} size="small" variant="outlined" />
                         </Box>
                       }
-                      secondary={`Need: ${item.needed} ${item.unit || ''} · Est. ₹${(item.estimatedCost * item.needed).toFixed(0)}`}
+                      secondary={`Need: ${item.needed} ${item.unit || ''} · Est. ₹${((parseFloat(item.estimatedCost) || 0) * (parseFloat(item.needed) || 1)).toFixed(0)}`}
                     />
                     <ListItemSecondaryAction>
                       <IconButton edge="end" onClick={() => removeFromShoppingList(item.id)} color="error" size="small">

@@ -20,6 +20,7 @@ import { useInventory } from '../context/InventoryContext';
 const MotionBox = motion(Box);
 
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
+const API_KEY_VALID = API_KEY && API_KEY.trim().length > 10;
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
 
 const QUICK_PROMPTS = [
@@ -208,8 +209,8 @@ const ChatBot = ({ isDialog = false }) => {
     }
 
     // If API quota is already known to be exhausted, give a helpful local fallback
-    if (apiStatus === 'quota') {
-      setMessages(prev => [...prev, { role: 'assistant', content: `🤖 I can answer that, but the Gemini API quota is exhausted for today.\n\n💡 Try asking:\n• "What items are running low?"\n• "Give me a shopping list"\n• "What expires soon?"\n• "Show inventory summary"\n\nThese work without any API!` }]);
+    if (apiStatus === 'quota' || apiStatus === 'error' || !API_KEY_VALID) {
+      setMessages(prev => [...prev, { role: 'assistant', content: `🤖 I can answer that, but ${!API_KEY_VALID ? 'no Gemini API key is configured' : 'the Gemini API quota is exhausted for today'}.\n\n💡 Try asking:\n• "What items are running low?"\n• "Give me a shopping list"\n• "What expires soon?"\n• "Show inventory summary"\n\nThese work without any API!` }]);
       setIsLoading(false);
       return;
     }
@@ -380,7 +381,7 @@ User: ${userMessage}`;
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.8 }}>
               <Box className="status-dot" />
               <Typography variant="caption" color="text.secondary">
-                {apiStatus === 'quota' ? '⚠️ Local mode (API quota exhausted)' : 'Vision · Voice · Barcode · Gemini AI'}
+                {apiStatus === 'quota' ? '⚠️ Local mode (API quota exhausted)' : !API_KEY_VALID ? '⚠️ Local mode (no API key)' : 'Vision · Voice · Barcode · Gemini AI'}
               </Typography>
             </Box>
           </Box>
@@ -403,9 +404,9 @@ User: ${userMessage}`;
         </Box>
 
         {/* API quota warning banner */}
-        {apiStatus === 'quota' && (
+        {(apiStatus === 'quota' || !API_KEY_VALID) && (
           <Alert severity="warning" sx={{ borderRadius: 0, py: 0.5, fontSize: '0.8rem' }}>
-            Gemini API quota exhausted — running in local mode. Common questions still work!
+            {!API_KEY_VALID ? 'No API key configured — running in local mode. Add REACT_APP_GEMINI_API_KEY to .env to enable full AI.' : 'Gemini API quota exhausted — running in local mode. Common questions still work!'}
           </Alert>
         )}
 

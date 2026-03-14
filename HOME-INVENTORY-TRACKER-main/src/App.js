@@ -82,7 +82,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <InventoryProvider>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <div className="App">
             <Navbar mode={mode} toggleMode={toggleMode} />
             <AnimatePresence mode='wait'>
