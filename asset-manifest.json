@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/HOME-INVENTORY-TRACKER-CHATBOT/static/css/main.272f94ae.css",
+    "main.js": "/HOME-INVENTORY-TRACKER-CHATBOT/static/js/main.67cc00bd.js",
+    "static/js/453.01466ddd.chunk.js": "/HOME-INVENTORY-TRACKER-CHATBOT/static/js/453.01466ddd.chunk.js",
+    "index.html": "/HOME-INVENTORY-TRACKER-CHATBOT/index.html",
+    "main.272f94ae.css.map": "/HOME-INVENTORY-TRACKER-CHATBOT/static/css/main.272f94ae.css.map",
+    "main.67cc00bd.js.map": "/HOME-INVENTORY-TRACKER-CHATBOT/static/js/main.67cc00bd.js.map",
+    "453.01466ddd.chunk.js.map": "/HOME-INVENTORY-TRACKER-CHATBOT/static/js/453.01466ddd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.272f94ae.css",
+    "static/js/main.67cc00bd.js"
+  ]
+}
