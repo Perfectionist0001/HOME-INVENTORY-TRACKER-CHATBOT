@@ -168,7 +168,7 @@ npm test         # Run tests
 
 ## 📄 License
 
-MIT © [Your Name](https://github.com/your-username)
+MIT © [NIKHIL SINGH](https://github.com/perfectionist0001)
 
 ---
 
