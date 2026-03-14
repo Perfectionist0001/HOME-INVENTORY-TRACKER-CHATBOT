@@ -1,118 +1,175 @@
-# Home Inventory Tracker with AI Assistant
+# 🏠 SmartPantry AI
 
-A modern web application for tracking home inventory with an AI-powered assistant. Built with React, Material-UI, and Google's Gemini AI.
+> An AI-powered home inventory management system with camera scanning, voice commands, barcode detection, expiry tracking, and a smart chatbot — built with React and Google Gemini.
 
-## Features
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)
+![MUI](https://img.shields.io/badge/MUI-v5-007FFF?style=flat-square&logo=mui)
+![Gemini](https://img.shields.io/badge/Gemini-2.0_Flash-4285F4?style=flat-square&logo=google)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-- **Smart Inventory Management**: Track quantities, set thresholds, and get alerts
-- **AI Assistant**: Get personalized recommendations and insights
-- **Beautiful Dashboard**: Visual analytics with charts and statistics
-- **Category Management**: Organize items by categories with intuitive icons
-- **Real-time Alerts**: Get notified when items are running low
-- **Responsive Design**: Works seamlessly on desktop and mobile
+---
 
-## Tech Stack
+## ✨ Features
 
-- React.js
-- Material-UI
-- Framer Motion for animations
-- Chart.js for data visualization
-- Google's Gemini AI API
-- Local Storage for data persistence
+| Feature | Description |
+|---|---|
+| 📦 **Smart Inventory** | Track items across categories with quantity, unit, threshold & expiry date |
+| 🤖 **AI Chatbot** | Chat with Gemini 2.0 Flash for restocking tips, recipes & inventory insights |
+| 📷 **Image Recognition** | Scan a product with your camera — AI identifies and adds it automatically |
+| 🔍 **Barcode Scanner** | Point at any barcode to instantly identify and add the product |
+| 🎤 **Voice Commands** | Speak to ask questions or add items hands-free |
+| ⏳ **Expiry Tracking** | Visual expiry timeline with alerts for items expiring in 3 / 7 / 30 days |
+| 🛒 **Smart Shopping List** | Auto-generate from low stock with budget estimates and checkout flow |
+| 📊 **Analytics Dashboard** | Pie charts, bar graphs, spending history and budget tracking |
+| 👨‍👩‍👧 **Multi-User** | Separate inventory profiles for each family member |
+| 🌙 **Dark / Light Mode** | Full theme toggle with glassmorphism UI |
+| 📱 **Responsive** | Mobile-friendly with hamburger nav drawer |
+| 🔔 **Notifications** | In-app notification center for inventory events |
 
-## Getting Started
+---
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/TheAryan77/Home-inventory.git
-   ```
+## 🖥️ Screenshots
 
-2. Install dependencies:
-   ```bash
-   cd Home-inventory
-   npm install
-   ```
+### Home
+![Home](https://via.placeholder.com/900x500/0a0a1a/667eea?text=SmartPantry+AI+Home)
 
-3. Add your Gemini API key:
-   - Open `src/pages/ChatBot.js`
-   - Replace `YOUR_API_KEY` with your actual Gemini API key
+### Dashboard
+![Dashboard](https://via.placeholder.com/900x500/0a0a1a/f093fb?text=Analytics+Dashboard)
 
-4. Start the development server:
-   ```bash
-   npm start
-   ```
+### AI Chatbot
+![Chatbot](https://via.placeholder.com/900x500/0a0a1a/4facfe?text=AI+Chatbot)
 
-## Usage
+> Replace placeholders with actual screenshots after running the app.
 
-1. **Dashboard**: View inventory statistics and alerts
-2. **Inventory**: Manage items by category
-3. **AI Assistant**: Click the bubble in the bottom-right corner for AI help
-4. **Add Items**: Use the + button in the inventory page
+---
 
-## Contributing
+## 🚀 Getting Started
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+### Prerequisites
 
-## License
+- Node.js 16+
+- npm or yarn
+- A [Google Gemini API key](https://aistudio.google.com/app/apikey) *(free)*
 
-MIT
+### Installation
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+# Clone the repo
+git clone https://github.com/your-username/smartpantry-ai.git
+cd smartpantry-ai
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Install dependencies
+npm install
 
-### `npm test`
+# Set up environment variables
+cp .env.example .env
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Edit `.env` and add your Gemini API key:
 
-### `npm run build`
+```env
+REACT_APP_GEMINI_API_KEY=your_api_key_here
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Run
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🔑 Environment Variables
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Variable | Description | Required |
+|---|---|---|
+| `REACT_APP_GEMINI_API_KEY` | Google Gemini API key for AI features | Optional* |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> *The app runs in **local mode** without an API key — all inventory queries (low stock, expiry, shopping list, stats) still work. A key is only needed for open-ended AI responses and image/barcode recognition.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🗂️ Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+src/
+├── components/
+│   ├── Navbar.js          # Top navigation with mobile drawer
+│   └── AiAssistant.js     # Floating AI assistant FAB + dialog
+├── context/
+│   └── InventoryContext.js # Global state (inventory, shopping, budget, users)
+├── data/
+│   └── defaultData.js     # Seed inventory data
+├── pages/
+│   ├── Home.js            # Landing page with stats & feature cards
+│   ├── Dashboard.js       # Analytics, charts, alerts
+│   ├── Inventory.js       # CRUD inventory management
+│   ├── ShoppingList.js    # Shopping list with checkout
+│   ├── ExpiryTracker.js   # Expiry date tracking
+│   └── ChatBot.js         # AI chatbot with vision & voice
+└── App.js                 # Theme, routing, providers
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🧠 How the Chatbot Works
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The chatbot has two layers:
 
-### Analyzing the Bundle Size
+1. **Local Intelligence Engine** — handles all inventory-specific queries instantly with zero API calls:
+   - Low stock checks
+   - Shopping list suggestions
+   - Expiry reports
+   - Inventory summaries
+   - Budget overview
+   - Category stats
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. **Gemini 2.0 Flash API** — handles open-ended questions, recipe suggestions, and product identification via camera/barcode when an API key is configured.
 
-### Making a Progressive Web App
+If the API quota is exhausted or no key is set, the app automatically falls back to local mode with a clear status indicator.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🛠️ Tech Stack
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- **React 18** — UI framework
+- **Material UI v5** — Component library
+- **Framer Motion** — Animations
+- **Chart.js + react-chartjs-2** — Analytics charts
+- **react-webcam** — Camera access
+- **@zxing/library** — Barcode decoding
+- **Google Gemini 2.0 Flash** — AI responses & image recognition
+- **Web Speech API** — Voice input
+- **localStorage** — Persistent state (no backend needed)
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📦 Available Scripts
 
-### `npm run build` fails to minify
+```bash
+npm start        # Start development server
+npm run build    # Build for production
+npm test         # Run tests
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## 🤝 Contributing
+
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m 'Add my feature'`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+MIT © [Your Name](https://github.com/your-username)
+
+---
+
+<p align="center">Built with ❤️ using React & Google Gemini AI</p>
